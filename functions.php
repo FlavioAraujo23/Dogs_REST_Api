@@ -2,10 +2,11 @@
 // Remove as rotas definidas pelo WordPress
 // remove_action('rest_api_init', 'create_initial_rest_routes', 99);
 
-add_filter('rest_endpoints' . function($endpoints) {
-  unset($endpoints['/wp/v1/users']);
-  unset($endpoints['/wp/v1/users/(?P<id>[0-9]+)']);
-}); 
+add_filter('rest_endpoints', function ($endpoints) {
+  unset($endpoints['/wp/v2/users']);
+  unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
+  return $endpoints;
+});
 
 $dirbase = get_template_directory();
 
